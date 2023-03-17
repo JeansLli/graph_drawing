@@ -27,4 +27,5 @@ To visualize the input and output data, please run
 ```
 python visualization.py test-1.txt
 ```
+The input data is in the fold `instances`, and the output data is in the fold `output_final`
 

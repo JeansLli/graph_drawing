@@ -1,4 +1,4 @@
-# The code is for drawing graph with minimum edge crossings
+# Drawing graph with minimum edge crossings
 
 
 ## Force Directed Method
@@ -23,7 +23,7 @@ python EA.py test-1.txt 1000
 
 
 ## Visualization
-Run
+To visualize the input and output data, please run
 ```
 python visualization.py test-1.txt
 ```

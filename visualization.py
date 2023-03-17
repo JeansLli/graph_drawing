@@ -32,7 +32,7 @@ def visualize(points, nodes, edges, annotate=True, title="Visualization"):
     plt.show()
 
 def main(argv):
-    with open("./output_1/"+argv[1], 'r') as f:
+    with open("./output_final/"+argv[1], 'r') as f:
         data = json.load(f)
 
         points = [(d['x'], d['y']) for d in data["points"]]

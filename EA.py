@@ -65,7 +65,6 @@ def overlap_vectorized(A1, A2, B1, B2):
     overlaps = np.zeros(len(A1), dtype=bool)
 
     for i, (a1, a2, b1, b2) in enumerate(zip(A1, A2, B1, B2)):
-
         if (on_segment(a1, b1, a2) or on_segment(a1, b2, a2) or
             on_segment(b1, a1, b2) or on_segment(b1, a2, b2)):
             overlaps[i] = True
@@ -93,11 +92,11 @@ def count_crossings(nodes, edges):
     crossed = np.logical_and(cond1, cond2)
     crossed_counts = np.bincount(edge_pairs[:, 0], crossed) + np.bincount(edge_pairs[:, 1], crossed)
     overlaps_counts = np.bincount(edge_pairs[:, 0], overlaps) + np.bincount(edge_pairs[:, 1], overlaps)
-    overlaps_counts = overlaps_counts>0
+    
     
     # if 2 edges are overlapped, we add large weight to corresponding edges 
     # such that we will move this edge with very high probability in the next few iterations
-    edges[:, 2] = crossed_counts[:n_edges] + overlaps_counts[:n_edges]*len(edges)
+    edges[:, 2] = crossed_counts[:n_edges] + overlaps_counts[:n_edges]
 
     return edges
 
@@ -205,7 +204,7 @@ def main(argv):
             print("\n update iter=",i)
             print("new_crossing_num=",new_crossing_num)
             store_output(points, nodes_np, edges_np[:,:2], "./output/"+argv[1])
-            #visualize(points, newnodes, edges, title="Output Data")  
+            visualize(points, newnodes, edges, title="Output Data")  
         i=i+1
         etime = time.time()
 
